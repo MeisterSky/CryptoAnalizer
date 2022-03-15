@@ -29,6 +29,17 @@ public class PicocliRunner implements Runnable {
         System.out.println(result);
     }
 
+    @Command(name = "decrypt", description = "Decrypt from file to file using statistical analysis")
+        // |3|
+    void decrypt(
+            @Parameters(paramLabel = "<source file>", description = "source file with encrypted text") String src,
+            @Parameters(paramLabel = "<dest file>", description = "dest file which should have decrypted text") String dest,
+            @Parameters(paramLabel = "<key>", description = "key for encryption") String key) {
+        String[] args = {"decrypt", src, dest, key};
+        Result result = application.run(args);
+        System.out.println(result);
+    }
+
     @Command(name = "bruteforce", description = "Decrypt from file to file using brute force")
         // |3|
     void bruteForce(
@@ -47,18 +58,6 @@ public class PicocliRunner implements Runnable {
             @Option(names = {"-r", "--representative"}, description = "file with unencrypted representative text") String representativeFile,
             @Parameters(paramLabel = "<dest file>", description = "dest file which should have decrypted text") String dest) {
         String[] args = {"analyze", src, dest};
-        Result result = application.run(args);
-        System.out.println(result);
-    }
-
-
-    @Command(name = "decrypt", description = "Decrypt from file to file using statistical analysis")
-        // |3|
-    void decrypt(
-            @Parameters(paramLabel = "<source file>", description = "source file with encrypted text") String src,
-            @Parameters(paramLabel = "<dest file>", description = "dest file which should have decrypted text") String dest,
-            @Parameters(paramLabel = "<key>", description = "key for encryption") String key) {
-        String[] args = {"decrypt", src, dest, key};
         Result result = application.run(args);
         System.out.println(result);
     }

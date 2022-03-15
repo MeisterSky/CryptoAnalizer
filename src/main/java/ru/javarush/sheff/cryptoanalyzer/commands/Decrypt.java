@@ -12,7 +12,7 @@ public class Decrypt implements Action {
 
     @Override
     public Result execute(String[] parameters) {
-        alphabetOffsetMap = new AlphabetOffsetGenerator().getAlphabetOffsetMap(Integer.parseInt(parameters[2]));
+        alphabetOffsetMap = new AlphabetOffsetGenerator().getAlphabetOffsetMap((Integer.parseInt(parameters[2]) * -1));
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(parameters[0]));
              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(parameters[1]))) {
             char sourceChar;

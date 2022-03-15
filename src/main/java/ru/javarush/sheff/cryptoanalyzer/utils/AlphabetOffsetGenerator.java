@@ -25,7 +25,7 @@ public class AlphabetOffsetGenerator {
                 if (i + offset > alphabet.length) {
                     alphabetOffsetMap.put(alphabet[i - 1 + offset - alphabet.length], alphabet[i]);
                 } else {
-                    alphabetOffsetMap.put(alphabet[i + offset -1], alphabet[i]);
+                    alphabetOffsetMap.put(alphabet[i + offset - 1], alphabet[i]);
                 }
             }
             return alphabetOffsetMap;
