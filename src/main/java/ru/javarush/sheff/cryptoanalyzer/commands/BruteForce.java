@@ -8,7 +8,6 @@ public class BruteForce implements Action {
 
     @Override
     public Result execute(String[] parameters) {
-        //TODO there does something
 
         double commandExecutionTime = ((double) (System.currentTimeMillis() - currentTimeMillis));
         return new Result("Brute force complete", ResultCode.OK, commandExecutionTime);
