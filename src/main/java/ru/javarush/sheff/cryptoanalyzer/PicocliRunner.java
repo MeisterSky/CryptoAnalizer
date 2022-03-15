@@ -9,9 +9,7 @@ import picocli.CommandLine.ParameterException;
 import picocli.CommandLine.Spec;
 import ru.javarush.sheff.cryptoanalyzer.entity.Result;
 
-import java.io.File;
-
-@Command(name = "cypher", subcommands = {CommandLine.HelpCommand.class },
+@Command(name = "cypher", subcommands = {CommandLine.HelpCommand.class},
         description = "Caesar cypher command")
 public class PicocliRunner implements Runnable {
 

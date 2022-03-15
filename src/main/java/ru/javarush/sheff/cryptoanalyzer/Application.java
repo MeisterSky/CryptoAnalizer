@@ -6,10 +6,6 @@ import ru.javarush.sheff.cryptoanalyzer.exceptions.AppException;
 import java.util.Arrays;
 
 import ru.javarush.sheff.cryptoanalyzer.controllers.MainController;
-import ru.javarush.sheff.cryptoanalyzer.entity.Result;
-import ru.javarush.sheff.cryptoanalyzer.exceptions.AppException;
-
-import java.util.Arrays;
 
 public class Application {
 
