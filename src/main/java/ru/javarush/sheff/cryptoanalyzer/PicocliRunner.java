@@ -28,7 +28,6 @@ public class PicocliRunner implements Runnable {
     }
 
     @Command(name = "decrypt", description = "Decrypt from file to file using statistical analysis")
-        // |3|
     void decrypt(
             @Parameters(paramLabel = "<source file>", description = "source file with encrypted text") String src,
             @Parameters(paramLabel = "<dest file>", description = "dest file which should have decrypted text") String dest,
@@ -39,7 +38,6 @@ public class PicocliRunner implements Runnable {
     }
 
     @Command(name = "bruteforce", description = "Decrypt from file to file using brute force")
-        // |3|
     void bruteForce(
             @Parameters(paramLabel = "<source file>", description = "source file with encrypted text") String src,
             @Option(names = {"-r", "--representative"}, description = "file with unencrypted representative text") String representativeFile,
@@ -50,7 +48,6 @@ public class PicocliRunner implements Runnable {
     }
 
     @Command(name = "analyze", description = "Decrypt from file to file using statistical analysis")
-        // |3|
     void statisticalDecrypt(
             @Parameters(paramLabel = "<source file>", description = "source file with encrypted text") String src,
             @Option(names = {"-r", "--representative"}, description = "file with unencrypted representative text") String representativeFile,
