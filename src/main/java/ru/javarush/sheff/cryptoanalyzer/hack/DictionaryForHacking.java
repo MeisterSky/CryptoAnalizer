@@ -1,6 +1,6 @@
 package ru.javarush.sheff.cryptoanalyzer.hack;
 
-import ru.javarush.sheff.cryptoanalyzer.constants.HackParameters;
+import ru.javarush.sheff.cryptoanalyzer.constants.Constants;
 import ru.javarush.sheff.cryptoanalyzer.utils.HackUtils;
 
 import java.util.HashMap;
@@ -55,8 +55,8 @@ record DictionaryForHacking(String[] sourceOfDictionary) {
     }
 
     private static Integer getCharactersDistance(String character1, String character2) {
-        Integer index1 = HackParameters.charactersWithFrequencyDescending.indexOf(character1);
-        Integer index2 = HackParameters.charactersWithFrequencyDescending.indexOf(character2);
+        Integer index1 = Constants.charactersWithFrequencyDescendingList.indexOf(character1);
+        Integer index2 = Constants.charactersWithFrequencyDescendingList.indexOf(character2);
 
         return Math.abs(index1 - index2);
     }

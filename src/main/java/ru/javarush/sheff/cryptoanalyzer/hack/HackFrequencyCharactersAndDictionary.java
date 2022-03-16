@@ -1,7 +1,5 @@
 package ru.javarush.sheff.cryptoanalyzer.hack;
 
-import ru.javarush.sheff.cryptoanalyzer.constants.HackParameters;
-
 import java.util.HashSet;
 import java.util.Map;
 import java.util.regex.Matcher;

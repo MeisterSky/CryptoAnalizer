@@ -1,6 +1,6 @@
 package ru.javarush.sheff.cryptoanalyzer.hack;
 
-import ru.javarush.sheff.cryptoanalyzer.constants.HackParameters;
+import ru.javarush.sheff.cryptoanalyzer.constants.Constants;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -9,8 +9,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 class FrequencyCharactersForHacking {
-    private static final List<String> charactersWithFrequencyDescending = HackParameters.charactersWithFrequencyDescending;
-    private static final List<String> encryptionAlphabet = new LinkedList<>(HackParameters.encryptionAlphabet);
+    private static final List<String> charactersWithFrequencyDescending = Constants.charactersWithFrequencyDescendingList;
+    private static final List<String> encryptionAlphabet = new LinkedList<>(Constants.encryptionAlphabetList);
 
 
     public static Map<String, String> getHackedEncryptionTable(String encryptedText) {
@@ -32,7 +32,7 @@ class FrequencyCharactersForHacking {
         for (char character : characters) {
             String letter = String.valueOf(character).toUpperCase();
 
-            if ( !HackParameters.encryptionAlphabet.contains(letter) )
+            if ( !Constants.encryptionAlphabetList.contains(letter) )
                 continue;
 
             if ( !countCharacterTable.containsKey(letter)) {
@@ -85,7 +85,7 @@ class FrequencyCharactersForHacking {
 
         LinkedList<String> charactersThatWereNotInFrequencyTable = new LinkedList<>(charactersWithFrequencyDescending);
 
-        Integer index = 0;
+        int index = 0;
         for (; index < encryptedCharactersWithFrequencyDescending.size(); index++ ) {
             String fromCharacter = encryptedCharactersWithFrequencyDescending.get(index).getKey();
             String toCharacter = charactersWithFrequencyDescending.get(index);
@@ -111,13 +111,11 @@ class FrequencyCharactersForHacking {
      * @return List with frequency of letters sorted it in descending order by frequency
      */
     private List<Map.Entry<String, Float>> getCharactersSortedByFrequency(Map<String, Float> frequencyTable) {
-        List<Map.Entry<String, Float>> entriesWithFrequencyDescending =
-                frequencyTable
-                        .entrySet()
-                        .stream()
-                        .sorted( (x, y) -> y.getValue().compareTo(x.getValue()) )
-                        .collect(Collectors.toList());
 
-        return entriesWithFrequencyDescending;
+        return frequencyTable
+                .entrySet()
+                .stream()
+                .sorted( (x, y) -> y.getValue().compareTo(x.getValue()) )
+                .collect(Collectors.toList());
     }
 }
