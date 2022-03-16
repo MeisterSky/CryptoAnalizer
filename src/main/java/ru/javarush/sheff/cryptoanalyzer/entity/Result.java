@@ -1,7 +1,6 @@
 package ru.javarush.sheff.cryptoanalyzer.entity;
 
 public class Result {
-
     private final String message;
     private final ResultCode resultCode;
     private final double commandExecutionTime;

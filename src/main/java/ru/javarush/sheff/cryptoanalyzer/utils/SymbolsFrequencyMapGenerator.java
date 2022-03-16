@@ -8,7 +8,6 @@ import java.util.HashMap;
 public class SymbolsFrequencyMapGenerator {
 
     HashMap<Character, Integer> symbolsFrequencyMap = new HashMap<>();
-    char[] alphabet;
 
     public HashMap<Character, Integer> getSymbolsFrequencyMap(String representative) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(representative))) {

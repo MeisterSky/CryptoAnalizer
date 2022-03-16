@@ -9,9 +9,9 @@ public class AlphabetSelector {
 
     public AlphabetSelector(String lang) {
         switch (lang.toLowerCase()) {
-            case "rus" -> alphabet = Constants.RUS_ALPHABET_WITH_SYMBOLS_AND_NUMBERS;
-            case "eng" -> alphabet = Constants.ENG_ALPHABET_WITH_SYMBOLS_AND_NUMBERS;
-            case "ger" -> alphabet = Constants.GER_ALPHABET_WITH_SYMBOLS_AND_NUMBERS;
+            case "rus" -> alphabet = Constants.RUS_ALPHABET;
+            case "eng" -> alphabet = Constants.ENG_ALPHABET;
+            case "ger" -> alphabet = Constants.GER_ALPHABET;
             default -> throw new AppException("Invalid language");
         }
     }

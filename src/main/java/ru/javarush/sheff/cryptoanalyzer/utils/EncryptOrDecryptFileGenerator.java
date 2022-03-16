@@ -14,10 +14,10 @@ public class EncryptOrDecryptFileGenerator {
             char offsetChar;
             int symbol = bufferedReader.read();
             while (symbol != -1) {  // When it reaches the end of the file, it will get '-1'
-                sourceChar = (char) symbol; // Converted to char
+                sourceChar = (char) symbol;// Converted to upper case char
                 // If null, then returns the original symbol
                 offsetChar = alphabetOffsetMap.get(sourceChar) != null ? alphabetOffsetMap.get(sourceChar) : sourceChar;
-                bufferedWriter.write(offsetChar); // Writing to dest file
+                bufferedWriter.write(Character.toUpperCase(offsetChar)); // Writing to dest file
                 symbol = bufferedReader.read(); // Reading a symbol
             }
         } catch (IOException e) {

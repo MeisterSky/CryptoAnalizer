@@ -6,7 +6,6 @@ import ru.javarush.sheff.cryptoanalyzer.utils.*;
 import java.util.HashMap;
 
 public class Decrypt implements Action {
-
     long currentTimeMillis = System.currentTimeMillis();
     HashMap<Character, Character> alphabetOffsetMap;
     EncryptOrDecryptFileGenerator encryptOrDecryptFileGenerator;
@@ -21,8 +20,10 @@ public class Decrypt implements Action {
         lang = parameters[1];
         dest = parameters[2];
         key = Integer.parseInt(parameters[3]) * -1; //Need a negative value of parameters[3] to decrypt
+
         alphabetOffsetMap = new AlphabetOffsetMapGenerator().getAlphabetOffsetMap(lang, key);
         encryptOrDecryptFileGenerator = new EncryptOrDecryptFileGenerator(alphabetOffsetMap, src, dest);
+
         double commandExecutionTime = ((double) (System.currentTimeMillis() - currentTimeMillis));
         return new Result("Decrypt all right", ResultCode.OK, commandExecutionTime);
     }
