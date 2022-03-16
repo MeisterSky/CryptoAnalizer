@@ -6,7 +6,8 @@ import ru.javarush.sheff.cryptoanalyzer.exceptions.AppException;
 public enum Actions {
     ENCRYPT(new Encrypt()),
     DECRYPT(new Decrypt()),
-    BRUTEFORCE(new BruteForce());
+    BRUTEFORCE(new BruteForce()),
+    ANALYZE(new Analyze());
 
     private final Action action;
 

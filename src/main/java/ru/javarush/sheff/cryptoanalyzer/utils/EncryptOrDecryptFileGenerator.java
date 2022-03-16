@@ -5,11 +5,11 @@ import ru.javarush.sheff.cryptoanalyzer.exceptions.AppException;
 import java.io.*;
 import java.util.HashMap;
 
-public class FileGenerator {
+public class EncryptOrDecryptFileGenerator {
 
-    public FileGenerator(HashMap<Character, Character> alphabetOffsetMap, String... parameters) {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(parameters[0]));
-             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(parameters[1]))) {
+    public EncryptOrDecryptFileGenerator(HashMap<Character, Character> alphabetOffsetMap, String src, String dest) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(src));
+             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(dest))) {
             char sourceChar;
             char offsetChar;
             int symbol = bufferedReader.read();

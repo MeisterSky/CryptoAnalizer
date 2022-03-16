@@ -20,9 +20,10 @@ public class PicocliRunner implements Runnable {
     @Command(name = "encrypt", description = "Encrypt from file to file using key")
     void encrypt(
             @Parameters(paramLabel = "<source file>", description = "source file with text to encrypt") String src,
+            @Parameters(paramLabel = "<language>", description = "the language of the file to be encrypted") String lang,
             @Parameters(paramLabel = "<dest file>", description = "dest file which should have encrypted text") String dest,
             @Parameters(paramLabel = "<key>", description = "key for encryption") String key) {
-        String[] args = {"encrypt", src, dest, key};
+        String[] args = {"encrypt", src, lang, dest, key};
         Result result = application.run(args);
         System.out.println(result);
     }
@@ -30,9 +31,10 @@ public class PicocliRunner implements Runnable {
     @Command(name = "decrypt", description = "Decrypt from file to file using statistical analysis")
     void decrypt(
             @Parameters(paramLabel = "<source file>", description = "source file with encrypted text") String src,
+            @Parameters(paramLabel = "<language>", description = "the language of the file to be decrypted") String lang,
             @Parameters(paramLabel = "<dest file>", description = "dest file which should have decrypted text") String dest,
             @Parameters(paramLabel = "<key>", description = "key for encryption") String key) {
-        String[] args = {"decrypt", src, dest, key};
+        String[] args = {"decrypt", src, lang, dest, key};
         Result result = application.run(args);
         System.out.println(result);
     }
@@ -40,9 +42,10 @@ public class PicocliRunner implements Runnable {
     @Command(name = "bruteforce", description = "Decrypt from file to file using brute force")
     void bruteForce(
             @Parameters(paramLabel = "<source file>", description = "source file with encrypted text") String src,
-            @Option(names = {"-r", "--representative"}, description = "file with unencrypted representative text") String representativeFile,
+            @Parameters(paramLabel = "<language>", description = "the language of the file to be decrypted") String lang,
+            @Option(names = {"-r", "--representative"}, description = "file with unencrypted representative text") String representative,
             @Parameters(paramLabel = "<dest file>", description = "dest file which should have decrypted text") String dest) {
-        String[] args = {"bruteforce", src, dest};
+        String[] args = {"bruteforce", src, lang, representative, dest};
         Result result = application.run(args);
         System.out.println(result);
     }
@@ -50,9 +53,9 @@ public class PicocliRunner implements Runnable {
     @Command(name = "analyze", description = "Decrypt from file to file using statistical analysis")
     void statisticalDecrypt(
             @Parameters(paramLabel = "<source file>", description = "source file with encrypted text") String src,
-            @Option(names = {"-r", "--representative"}, description = "file with unencrypted representative text") String representativeFile,
+            @Option(names = {"-r", "--representative"}, description = "file with unencrypted representative text") String representative,
             @Parameters(paramLabel = "<dest file>", description = "dest file which should have decrypted text") String dest) {
-        String[] args = {"analyze", src, dest};
+        String[] args = {"analyze", src, representative, dest};
         Result result = application.run(args);
         System.out.println(result);
     }
