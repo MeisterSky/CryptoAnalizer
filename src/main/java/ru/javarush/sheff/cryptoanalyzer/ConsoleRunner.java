@@ -29,7 +29,7 @@ public class ConsoleRunner {
             parametersBuilder();
             Result result = application.run(parameters);
             System.out.println(result);
-        } while (console.hasNext());
+        } while (true);
     }
 
     public static void selectParam0(Scanner console) {
@@ -49,6 +49,8 @@ public class ConsoleRunner {
                     param0 = "decrypt";
                 } else if (i == 3) {
                     param0 = "bruteforce";
+                } else if (i == 4) {
+                    param0 = "analyze";
                 } else {
                     System.out.println("Unfortunately, this functionality is not yet available.");
                     selectParam0(console);
@@ -67,6 +69,8 @@ public class ConsoleRunner {
             System.out.println(srcDecode);
         } else if (param0.equalsIgnoreCase("bruteforce")) {
             System.out.println(srcBruteForce);
+        } else if (param0.equalsIgnoreCase("analyze")) {
+            System.out.println(srcAnalyze);
         }
         String selection = console.nextLine();
         try {
@@ -75,6 +79,8 @@ public class ConsoleRunner {
             } else if (selection.isEmpty() && param0.equalsIgnoreCase("decrypt")) {
                 param1 = "texts\\Encoded.txt";
             } else if (selection.equalsIgnoreCase("bruteforce")) {
+                param1 = "texts\\Encoded.txt";
+            } else if (selection.equalsIgnoreCase("analyze")) {
                 param1 = "texts\\Encoded.txt";
             } else if (selection.equalsIgnoreCase("exit")) {
                 console.close();
@@ -90,7 +96,9 @@ public class ConsoleRunner {
                     } else if (selection.isEmpty() && param0.equalsIgnoreCase("decrypt")) {
                         System.out.println("Default value selected: texts\\Encoded.txt");
                         param1 = "texts\\Encoded.txt";
-                    } else if (selection.isEmpty() && param0.equalsIgnoreCase("bruteforce"))
+                    } else if (selection.isEmpty() && param0.equalsIgnoreCase("bruteforce")) {
+                        param1 = "texts\\Encoded.txt";
+                    } else if (selection.isEmpty() && param0.equalsIgnoreCase("analyze"))
                         param1 = "texts\\Encoded.txt";
                 }
             }
@@ -106,7 +114,9 @@ public class ConsoleRunner {
         } else if (param0.equalsIgnoreCase("decrypt")) {
             System.out.println(langDecrypt);
         } else if (param0.equalsIgnoreCase("bruteforce")) {
-            System.out.println("Unfortunately, brute force only works if the file contains English text.");
+            System.out.println(langDecrypt);
+        } else if (param0.equalsIgnoreCase("analyze")) {
+            System.out.println("Unfortunately, analyze only works if the file contains English text.");
             param2 = "eng";
             return;
         }
@@ -137,7 +147,9 @@ public class ConsoleRunner {
         } else if (param0.equalsIgnoreCase("decrypt")) {
             System.out.println(destDecrypt);
         } else if (param0.equalsIgnoreCase("bruteforce")) {
-            System.out.println(representativeBruteForce);
+            System.out.println(destBruteForce);
+        } else if (param0.equalsIgnoreCase("analyze")) {
+            System.out.println(representativeAnalyze);
         }
         String selection = console.nextLine();
         try {
@@ -146,7 +158,9 @@ public class ConsoleRunner {
             } else if (selection.isEmpty() && param0.equalsIgnoreCase("decrypt")) {
                 param3 = "texts\\Decoded.txt";
             } else if (selection.isEmpty() && param0.equalsIgnoreCase("bruteforce")) {
-                param3 = "texts\\Representative.txt";
+                param3 = "texts\\BruteForceResult.txt";
+            } else if (selection.isEmpty() && param0.equalsIgnoreCase("analyze")) {
+                param3 = "texts\\AnalyzeResult.txt";
             } else if (selection.equalsIgnoreCase("exit")) {
                 console.close();
                 System.exit(0);
@@ -172,7 +186,9 @@ public class ConsoleRunner {
         } else if (param0.equalsIgnoreCase("decrypt")) {
             System.out.println(keyDecrypt);
         } else if (param0.equalsIgnoreCase("bruteforce")) {
-            System.out.println(destBruteForce);
+            param4 = null;
+        } else if (param0.equalsIgnoreCase("analyze")) {
+            System.out.println(destAnalyze);
         }
         String selection = console.nextLine();
         try {
@@ -181,19 +197,21 @@ public class ConsoleRunner {
             } else if (selection.isEmpty() && param0.equalsIgnoreCase("decrypt")) {
                 param4 = "4";
             } else if (selection.isEmpty() && param0.equalsIgnoreCase("bruteforce")) {
-                param4 = "texts\\BruteForceResult.txt";
+                param4 = null;
+            } else if (selection.isEmpty() && param0.equalsIgnoreCase("analyze")) {
+                param4 = "texts\\Representative.txt";
             } else if (selection.equalsIgnoreCase("exit")) {
                 console.close();
                 System.exit(0);
             } else {
                 Path path = Path.of(selection);
-                if (Files.isRegularFile(path) && param0.equalsIgnoreCase("bruteforce")) {
+                if (Files.isRegularFile(path) && param0.equalsIgnoreCase("analyze")) {
                     param4 = selection;
-                } else if (!param0.equalsIgnoreCase("bruteforce")) {
+                } else if (!param0.equalsIgnoreCase("analyze")) {
                     param4 = selection;
                 } else {
-                    System.out.println("Default value selected: texts\\BruteForceResult.txt");
-                    param4 = "texts\\BruteForceResult.txt";
+                    System.out.println("Default value selected: texts\\Representative.txt");
+                    param4 = "texts\\Representative.txt";
                 }
             }
         } catch (Exception e) {
@@ -233,6 +251,7 @@ public class ConsoleRunner {
     private static final String srcEncode = "Please enter the source file \n" + "or press Enter if you want to select the default file (texts\\Source.txt)";
     private static final String srcDecode = "Please enter the source file \n" + "or press Enter if you want to select the default file (texts\\Encode.txt)";
     private static final String srcBruteForce = "Please enter the source file \n" + "or press Enter if you want to select the default file (texts\\Encode.txt)";
+    private static final String srcAnalyze = "Please enter the source file \n" + "or press Enter if you want to select the default file (texts\\Encode.txt)";
 
     private static final String langEncrypt = """
             Please enter the language of the file to be encrypted\s
@@ -252,7 +271,9 @@ public class ConsoleRunner {
 
     private static final String destBruteForce = "Please enter the destination file \nor press Enter if you want to select the default file (texts\\BruteForceResult.txt)";
 
-    private static final String representativeBruteForce = "Please enter the representative file \nor press Enter if you want to select the default file (texts\\Representative.txt)";
+    private static final String destAnalyze = "Please enter the destination file \nor press Enter if you want to select the default file (texts\\AnalyzeResult.txt)";
+
+    private static final String representativeAnalyze = "Please enter the representative file \nor press Enter if you want to select the default file (texts\\Representative.txt)";
 
     private static final String keyEncrypt = "Please enter the key for encryption or press Enter if you want to select the default key (4)";
 

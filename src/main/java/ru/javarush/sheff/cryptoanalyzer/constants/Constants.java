@@ -7,10 +7,11 @@ public class Constants {
     private static final String rus = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
     private static final String eng = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String ger = "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜß";
+    private static final String symbols = "-,.:; «»\"\\!?";
 
-    public static final char[] RUS_ALPHABET = (rus + rus.toLowerCase()).toCharArray();
-    public static final char[] ENG_ALPHABET = (eng + eng.toLowerCase()).toCharArray();
-    public static final char[] GER_ALPHABET = (ger + ger.toLowerCase()).toCharArray();
+    public static final char[] RUS_ALPHABET = (rus + rus.toLowerCase() + symbols).toCharArray();
+    public static final char[] ENG_ALPHABET = (eng + eng.toLowerCase() + symbols).toCharArray();
+    public static final char[] GER_ALPHABET = (ger + ger.toLowerCase() + symbols).toCharArray();
 
     public static final List<String> encryptionAlphabetList = Arrays.asList(eng.split(""));
 
