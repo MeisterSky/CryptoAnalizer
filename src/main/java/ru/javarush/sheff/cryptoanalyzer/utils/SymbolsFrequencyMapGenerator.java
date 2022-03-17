@@ -5,6 +5,7 @@ import ru.javarush.sheff.cryptoanalyzer.exceptions.AppException;
 import java.io.*;
 import java.util.HashMap;
 
+//TODO For automatically assemble a table of frequently repeated characters
 public class SymbolsFrequencyMapGenerator {
 
     HashMap<Character, Integer> symbolsFrequencyMap = new HashMap<>();

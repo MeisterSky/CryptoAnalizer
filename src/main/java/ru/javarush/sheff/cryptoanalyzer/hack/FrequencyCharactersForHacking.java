@@ -51,11 +51,6 @@ class FrequencyCharactersForHacking {
         return countCharacterTable;
     }
 
-    /**
-     * Convert map with count of letters into map with frequency of letters
-     * @param countCharacterTable Map with count of letters
-     * @return Map with frequency of letters
-     */
     private Map<String, Float> getFrequencyFromCount(Map<String, Integer> countCharacterTable) {
         Map<String, Float> frequencyTable = new HashMap<>();
 
@@ -74,11 +69,6 @@ class FrequencyCharactersForHacking {
         return frequencyTable;
     }
 
-    /**
-     * Create encryption table from map with frequency of letters for text and english language
-     * @param frequencyTable Map with frequency of letters
-     * @return Encryption table
-     */
     private Map<String, String> getEncryptionTableFromFrequencyTable(Map<String, Float> frequencyTable) {
         List<Map.Entry<String, Float>> encryptedCharactersWithFrequencyDescending = getCharactersSortedByFrequency(frequencyTable);
         Map<String, String> hackedEncryptionTable = new HashMap<>();
@@ -105,11 +95,6 @@ class FrequencyCharactersForHacking {
         return hackedEncryptionTable;
     }
 
-    /**
-     * Convert map with frequency of letters to list and sort it in descending order by frequency
-     * @param frequencyTable Map with frequency of letters
-     * @return List with frequency of letters sorted it in descending order by frequency
-     */
     private List<Map.Entry<String, Float>> getCharactersSortedByFrequency(Map<String, Float> frequencyTable) {
 
         return frequencyTable

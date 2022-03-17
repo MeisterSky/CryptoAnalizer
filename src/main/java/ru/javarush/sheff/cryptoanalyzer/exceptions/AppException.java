@@ -1,5 +1,6 @@
 package ru.javarush.sheff.cryptoanalyzer.exceptions;
 
+//TODO Exceptions
 public class AppException extends RuntimeException {
 
     public AppException() {
