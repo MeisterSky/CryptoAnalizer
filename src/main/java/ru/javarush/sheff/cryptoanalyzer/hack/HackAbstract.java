@@ -10,9 +10,7 @@ import java.util.Map;
 abstract class HackAbstract implements Hack {
 
     protected Map<String, String> encryptionTable;
-
     protected String encryptedText;
-
     protected List<String> actualCharacters;
 
     @Override

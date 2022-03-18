@@ -18,5 +18,4 @@ public class Constants {
     public static final List<String> charactersWithFrequencyDescendingList = Arrays.asList(
             "E", "A", "T", "N", "I", "O", "S", "H", "R", "Q", "L", "U", "C",
             "M", "F", "Y", "P", "W", "G", "V", "B", "K", "J", "X", "D", "Z");
-
 }

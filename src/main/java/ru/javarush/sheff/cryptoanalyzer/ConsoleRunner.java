@@ -15,6 +15,7 @@ public class ConsoleRunner {
     private static String param2;
     private static String param3;
     private static String param4;
+    private static String param5;
 
     public static void main(String[] args) {
         Application application = new Application();
@@ -26,10 +27,29 @@ public class ConsoleRunner {
             selectParam2(console);
             selectParam3(console);
             selectParam4(console);
+            if (param0.equalsIgnoreCase("analyze")) {
+                selectParam5(console);
+            }
             parametersBuilder();
             Result result = application.run(parameters);
             System.out.println(result);
         } while (true);
+    }
+
+    private static void selectParam5(Scanner console) {
+        System.out.println("""
+                if needed enter symbols for text correction in one line
+                example: to change letters 'a' to 'b', enter 'ab'
+                or press Enter if you want to return to the beginning of the program""");
+        String selection = console.nextLine();
+        if (selection.isEmpty()) {
+            param5 = "";
+        } else if (selection.equalsIgnoreCase("exit")) {
+            console.close();
+            System.exit(0);
+        } else {
+            param5 = selection;
+        }
     }
 
     public static void selectParam0(Scanner console) {
@@ -230,7 +250,7 @@ public class ConsoleRunner {
             selectParam4(console);
             parametersBuilder();
         } else {
-            parameters = new String[]{param0, param1, param2, param3, param4};
+            parameters = new String[]{param0, param1, param2, param3, param4, param5};
         }
     }
 

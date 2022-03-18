@@ -54,8 +54,11 @@ public class PicocliRunner implements Runnable {
             @Parameters(paramLabel = "<source file>", description = "source file with encrypted text") String src,
             @Parameters(paramLabel = "<language>", description = "the language of the file to be decrypted") String lang,
             @Parameters(paramLabel = "<dest file>", description = "dest file which should have decrypted text") String dest,
-            @Parameters(paramLabel = "representative", description = "file with unencrypted representative text") String representative) {
-        String[] args = {"analyze", src, lang, dest, representative};
+            @Parameters(paramLabel = "representative", description = "file with unencrypted representative text") String representative,
+            @Option(names = {"-c", "--correct"}, description = "if needed enter symbols for text correction in one line\n" +
+                    "example: to change letters 'a' to 'b', enter '-c ab'") String correctSymbols) {
+        if (correctSymbols == null) correctSymbols = "";
+        String[] args = {"analyze", src, lang, dest, representative, correctSymbols};
         Result result = application.run(args);
         System.out.println(result);
     }
